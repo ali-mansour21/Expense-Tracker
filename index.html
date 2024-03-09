@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styling/common/utilities.css" />
+    <link rel="stylesheet" href="./styling/index.css" />
+    <title>Expense Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="main-page d-flex">
+      <div class="side-bar bg-white p-20 bg-gray">
+        <h2 class="mt-0 txt-c">Expense Tracker</h2>
+        <ul class="list-none">
+          <li class="d-flex align-center fs-14 c-black p-10 gap-5 active">
+            <img class="w-20" src="./assets/gauge-solid.svg" alt="" />
+            <span class="hide-mobile">Dashboard</span>
+          </li>
+        </ul>
+      </div>
+      <section class="content w-full">
+        <div class="header between-flex p-30">
+          <div class="info">
+            <h1 class="title">Dashboard</h1>
+          </div>
+          <div class="profile">
+            <button class="btn-shape">Converter</button>
+            <img src="./assets/me.jpg" alt="profile" />
+          </div>
+        </div>
+        <div class="transactions-data p-20">
+          <h2>Transactions</h2>
+          <div class="container">
+            <div class="data">
+              <div class="box green">
+                <h2>$1000</h2>
+                <span>Income</span>
+              </div>
+              <div class="box red">
+                <h2>$1000</h2>
+                <span>Expense</span>
+              </div>
+              <div class="box blue">
+                <h2>$1000</h2>
+                <span>Total Balance</span>
+              </div>
+            </div>
+            <div class="chart">
+              <canvas id="myChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="transactions-action">
+          <div class="head">
+            <h2>All Transactions</h2>
+            <button class="btn-shape" id="showCreateTransactions">Add</button>
+          </div>
+          <div class="wrapper">
+            <div class="box p-20">
+              <h2>Income</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Amout</th>
+                    <th>Type</th>
+                    <th>Currency</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="income-data"></tbody>
+              </table>
+            </div>
+            <div class="box p-20">
+              <h2>Expense</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Amout</th>
+                    <th>Type</th>
+                    <th>Currency</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="expense-data"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="pop-up" id="pop-up-transaction">
+      <div class="popup-content">
+        <span class="close" id="close-transaction">&times;</span>
+        <h2>Create Transaction</h2>
+        <form id="addTransactionForm">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="amount">Amout</label>
+            <input type="number" id="amount" name="amount" required />
+          </div>
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select name="type" id="type">
+              <option value="Choose Type">Choose Type</option>
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="type">Currencies</label>
+            <select name="type" id="currencies">
+              <option value="Choose Currency">Choose Currency</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+          <button type="submit">Create</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/convertCurriencies.js"></script>
+    <script src="./scripts/chart.js" type="module"></script>
+  </body>
+</html>

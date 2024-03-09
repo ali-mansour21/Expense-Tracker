@@ -1,0 +1,337 @@
+:root {
+  --blue-color: #0075ff;
+  --blue-color-alt: #0d69d5;
+  --orange-color: #f59e0b;
+  --green-color: #22c55e;
+  --red-color: #f44336;
+  --gray-color: #f1f5f9;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Start Box */
+.d-flex {
+  display: flex;
+}
+.align-center {
+  align-items: center;
+}
+.spacebetween {
+  justify-content: space-between;
+}
+.f-wrap {
+  flex-wrap: wrap;
+}
+.d-grid {
+  display: grid;
+}
+.gap-5 {
+  gap: 5px;
+}
+.gap-20 {
+  gap: 20px;
+}
+.d-block {
+  display: block;
+}
+/* End Box */
+
+/* Start Components */
+.between-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-shape {
+  padding: 4px 10px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+/* End Components */
+
+/*   Most Used Styles */
+/* Full Width */
+.w-full {
+  width: 100%;
+}
+.w-fit {
+  width: fit-content;
+}
+.w-20 {
+  width: 20px;
+}
+.w-100 {
+  width: 100px;
+}
+/* Full Width */
+/* Full Heigth */
+.h-full {
+  height: 100%;
+}
+.h-100 {
+  height: 100px;
+}
+/* Full Heigth */
+
+/* Background-Color */
+.bg-white {
+  background-color: white;
+}
+.bg-eee {
+  background-color: #eee;
+}
+.bg-gray {
+  background-color: var(--gray-color);
+}
+.bg-blue {
+  background-color: var(--blue-color);
+}
+.bg-green {
+  background-color: var(--green-color);
+}
+.bg-orange {
+  background-color: var(--orange-color);
+}
+.bg-red {
+  background-color: var(--red-color);
+}
+/* Background-Color */
+
+/* Padding */
+.p-0 {
+  padding: 0;
+}
+.p-10 {
+  padding: 10px;
+}
+.p-15 {
+  padding: 15px;
+}
+.p-20 {
+  padding: 20px;
+}
+.p-30 {
+  padding: 30px;
+}
+.pt-10 {
+  padding-top: 10px;
+}
+.pt-15 {
+  padding-top: 15px;
+}
+.pt-20 {
+  padding-top: 20px;
+}
+.pb-10 {
+  padding-bottom: 10px;
+}
+.pb-15 {
+  padding-bottom: 15px;
+}
+.pb-20 {
+  padding-bottom: 20px;
+}
+.pl-15 {
+  padding-left: 15px;
+}
+/* Padding */
+
+/* Position */
+.p-relative {
+  position: relative;
+}
+.p-absolute {
+  position: absolute;
+}
+/* Position */
+
+/* Text Align */
+.txt-c {
+  text-align: center;
+}
+/* Text Align */
+
+/* Margin */
+.m-0 {
+  margin: 0;
+}
+.m-10 {
+  margin: 10px;
+}
+.m-15 {
+  margin: 15px;
+}
+.m-20 {
+  margin: 20px;
+}
+.mt-0 {
+  margin-top: 0;
+}
+.mt-5 {
+  margin-top: 5px;
+}
+.mt-10 {
+  margin-top: 10px;
+}
+.mt-15 {
+  margin-top: 15px;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.mt-25 {
+  margin-top: 25px;
+}
+.ml-5 {
+  margin-left: 5px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+.mr-15 {
+  margin-right: 15px;
+}
+.mb-0 {
+  margin-bottom: 0px;
+}
+.mb-5 {
+  margin-bottom: 5px;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mb-15 {
+  margin-bottom: 15px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+/* Margin */
+
+/* Ul List */
+.list-none {
+  list-style-type: none;
+}
+/* Ul List */
+
+/* Border Radius */
+.rad-6 {
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+.rad-10 {
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.rad-50 {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+/* Border Radius */
+/* Border  */
+.b-none {
+  border: none;
+}
+.border-eee {
+  border: 1px solid #eee;
+}
+.b-b {
+  border-bottom: 1px solid #eee;
+}
+.b-ccc {
+  border: 1px solid #ccc;
+}
+/* Border  */
+
+/* Font Size */
+.fs-13 {
+  font-size: 13px;
+}
+.fs-14 {
+  font-size: 14px;
+}
+.fs-15 {
+  font-size: 15px;
+}
+.fs-25 {
+  font-size: 25px;
+}
+/* Font Size */
+/* Font Weight */
+.fw-bold {
+  font-weight: bold;
+}
+/* Font Weight */
+
+/* Color */
+.c-black {
+  color: black;
+}
+.c-gray {
+  color: var(--gray-color);
+}
+.c-white {
+  color: white;
+}
+.c-blue {
+  color: var(--blue-color);
+}
+.c-orange {
+  color: var(--orange-color);
+}
+.c-green {
+  color: var(--green-color);
+}
+.c-red {
+  color: var(--red-color);
+}
+/* Color */
+
+/* Styles in Mobile  */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none;
+  }
+  .block-mobile {
+    display: block;
+  }
+  .txt-c-mobile {
+    text-align: center;
+  }
+  .fs-13-mobile {
+    font-size: 13px;
+  }
+}
+.red {
+  background-color: var(--red-color);
+}
+.green {
+  background-color: var(--green-color);
+}
+.blue {
+  background-color: var(--blue-color);
+}
+.gray{
+    color: #888;
+}

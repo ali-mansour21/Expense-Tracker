@@ -1,0 +1,234 @@
+.main-page {
+  min-height: 100vh;
+}
+.side-bar {
+  width: 250px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.side-bar > h2 {
+  margin-bottom: 50px;
+}
+.side-bar ul li {
+  border-radius: 5px;
+}
+.side-bar ul li span {
+  font-size: 18px;
+}
+.side-bar ul li:hover,
+.side-bar ul li.active {
+  outline: 3px solid #ffff;
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  .side-bar {
+    width: 58px;
+    padding: 10px;
+  }
+  .side-bar > h2 {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+}
+.content {
+  overflow: hidden;
+}
+.content .header .title {
+  color: #888;
+}
+.content .profile {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.content .profile button {
+  border: none;
+  padding: 12px 20px;
+  background-color: var(--green-color);
+  color: #ffff;
+  opacity: 75%;
+}
+.content .profile button:hover {
+  cursor: pointer;
+  opacity: 100%;
+}
+.content .profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.content .transactions-data {
+  margin-left: 80px;
+  margin-right: 80px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+.content .transactions-data h2 {
+  font-size: 20px;
+  color: #888;
+}
+.content .transactions-data .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 50px;
+}
+.content .transactions-data .container .data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.content .transactions-data .container .data .box {
+  padding: 30px;
+  height: 100px;
+  flex: 1 1 45%;
+  text-align: center;
+  margin-top: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  color: #ffff;
+}
+.content .transactions-data .container .data .box h2 {
+  color: #ffff;
+}
+.content .transactions-data .container .data .box span {
+  margin-top: 10px;
+  color: var(--gray-color);
+}
+.content .transactions-action {
+  margin: 30px 80px 30px;
+}
+.content .transactions-action .head {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 20px;
+}
+.content .transactions-action .head h2 {
+  color: #888;
+}
+.content .transactions-action .head button {
+  padding-left: 18px;
+  padding-right: 18px;
+  border: none;
+  color: #ffff;
+  font-size: 15px;
+  opacity: 75%;
+  background-color: var(--green-color);
+}
+.content .transactions-action .head button:hover {
+  cursor: pointer;
+  opacity: 100%;
+}
+.content .transactions-action .wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+}
+.content .transactions-action .box {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.content .transactions-action .box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.content .transactions-action .box table th,
+.content .transactions-action .box table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.content .transactions-action .box table th {
+  background-color: #f2f2f2;
+}
+.content .transactions-action .box table tbody td {
+  font-size: 12px;
+}
+.content .transactions-action .box table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+.content .transactions-action .box table td img {
+  width: 15px;
+  margin: auto;
+}
+.content .transactions-action .box table .delete:hover {
+  cursor: pointer;
+  filter: invert(52%) sepia(94%) saturate(1757%) hue-rotate(339deg)
+    brightness(94%) contrast(97%);
+}
+.content .transactions-action .box table .edit:hover {
+  cursor: pointer;
+}
+.pop-up {
+  position: fixed;
+  top: 130px;
+  left: 25%;
+  width: 50%;
+  height: 100%;
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+@media (max-width: 768px) {
+  .pop-up {
+    width: 80%;
+    left: 20%;
+  }
+}
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+.show {
+  display: block;
+  opacity: 1;
+}
