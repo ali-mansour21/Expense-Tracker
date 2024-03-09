@@ -18,6 +18,9 @@
 .align-center {
   align-items: center;
 }
+.f-column {
+  flex-direction: column;
+}
 .spacebetween {
   justify-content: space-between;
 }
@@ -332,6 +335,6 @@
 .blue {
   background-color: var(--blue-color);
 }
-.gray{
-    color: #888;
+.gray {
+  color: #888;
 }

@@ -60,7 +60,6 @@ function loadTransactions() {
   });
 }
 function createNewTransaction() {
-  console.log(selectCurrencies.value);
   const data = {
     id: allTransaction.length + 1,
     fullName: transactionName.value,

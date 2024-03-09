@@ -99,6 +99,8 @@
   margin-bottom: 15px;
   display: flex;
   gap: 20px;
+  align-items: center;
+  justify-content: space-between;
 }
 .content .transactions-action .head h2 {
   color: #888;
@@ -231,4 +233,7 @@ button[type="submit"]:hover {
 .show {
   display: block;
   opacity: 1;
+}
+.w-100 {
+  width: 100px !important;
 }

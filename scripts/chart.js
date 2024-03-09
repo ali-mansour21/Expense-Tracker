@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let transactions = [];
   let incomeTransactions = [];
   let expenseTransactions = [];
-  let convertCurrenciesValue;
   const transactionString = localStorage.getItem("transactions");
   if (transactionString) {
     transactions = JSON.parse(transactionString);
@@ -16,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "USD",
       transaction.amount
     );
-    console.log(result.data);
     const convertCurrenciesValue = result.data;
     return convertCurrenciesValue;
   }

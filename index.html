@@ -52,9 +52,35 @@
           </div>
         </div>
         <div class="transactions-action">
-          <div class="head">
-            <h2>All Transactions</h2>
-            <button class="btn-shape" id="showCreateTransactions">Add</button>
+          <div class="head f-column">
+            <div class="d-flex gap-20">
+              <h2>All Transactions</h2>
+              <button class="btn-shape" id="showCreateTransactions">Add</button>
+            </div>
+            <div class="center-flex gap-20 f-column">
+              <h3>Filter By:</h3>
+              <div class="center-flex gap-5">
+                <div class="center-flex gap-5">
+                  <h4>Type:</h4>
+                  <select name="type" id="filterType">
+                    <option value="choose type">Choose Type</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                  </select>
+                </div>
+                <div class="center-flex gap-5">
+                  <h4>Amount:</h4>
+                  <input class="w-100" type="number" placeholder="From" />
+                  <input class="w-100" type="number" placeholder="To" />
+                </div>
+                <div class="center-flex gap-5">
+                  <h4>Currencies</h4>
+                  <select name="filterCurrency" id="filterCurrency">
+                    <option value="choose type">Choose Type</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="wrapper">
             <div class="box p-20">
@@ -129,7 +155,7 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" type="module"></script>
     <script type="module" src="./scripts/convertCurriencies.js"></script>
     <script src="./scripts/chart.js" type="module"></script>
   </body>
