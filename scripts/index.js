@@ -9,7 +9,6 @@ const transactionForm = document.getElementById("addTransactionForm");
 const transactionName = document.getElementById("name");
 const amount = document.getElementById("amount");
 const type = document.getElementById("type");
-const currency = document.getElementById("currencies");
 const date = document.getElementById("date");
 const incomeBody = document.getElementById("income-data");
 const expenseBody = document.getElementById("expense-data");
@@ -21,10 +20,14 @@ const currencies = fetch(
     return data;
   })
   .then((data) => {
+    const option = document.createElement("option");
+    option.value = "Choose Currency";
+    option.innerHTML = "Choose Currency";
+    selectCurrencies.appendChild(option);
     data.forEach((element) => {
       const option = document.createElement("option");
       option.value = element.code.toLowerCase();
-      option.textContent = element.code;
+      option.innerHTML = element.code;
       selectCurrencies.appendChild(option);
     });
   });
@@ -37,11 +40,11 @@ function getTransactionFromLocalStorage() {
     allTransaction = JSON.parse(transactionString);
   }
 }
-function resetValues(fullName, amount, type, currency, date) {
+function resetValues(fullName, amount, type, currencie, date) {
   fullName.value = "";
   amount.value = "";
   type.value = "";
-  currency.value = "";
+  currencie.value = "";
   date.value = "";
 }
 function loadTransactions() {
@@ -57,15 +60,16 @@ function loadTransactions() {
   });
 }
 function createNewTransaction() {
+  console.log(selectCurrencies.value);
   const data = {
     id: allTransaction.length + 1,
     fullName: transactionName.value,
     amount: amount.value,
     type: type.value.toUpperCase(),
-    currency: currency.value.toUpperCase(),
+    currencie: selectCurrencies.value.toUpperCase(),
     date: date.value,
   };
-  resetValues(transactionName, amount, type, currency, date);
+  resetValues(transactionName, amount, type, selectCurrencies, date);
   allTransaction.push(data);
   addTransactionToLocalStorage();
   incomeBody.innerHTML = "";
@@ -75,7 +79,7 @@ function createNewTransaction() {
 }
 function generateTableRow(row, table) {
   const tableRow = document.createElement("tr");
-  const cells = ["id", "fullName", "amount", "type", "currency", "date"];
+  const cells = ["id", "fullName", "amount", "type", "currencie", "date"];
   cells.forEach((key) => {
     const cell = document.createElement("td");
     cell.textContent = row[key];
