@@ -34,6 +34,10 @@ fetch("https://crowded-cyan-wildebeest.cyclic.app/students/available")
     return data;
   })
   .then((data) => {
+    const option = document.createElement("option");
+    option.value = "Choose Currency";
+    option.textContent = "Choose Currency";
+    filterCurrency.appendChild(option);
     data.forEach((element) => {
       const filterOption = document.createElement("option");
       filterOption.value = element.code.toLowerCase();
@@ -83,7 +87,23 @@ const resetValues = (fullName, amount, type, currencie, date) => {
   currencie.value = "";
   date.value = "";
 };
-
+function filterTransactionCurrency(currency) {
+  return allTransaction.filter(
+    (transaction) =>
+      (transaction.currencie).toUpperCase() === (currency).toUpperCase()
+  );
+}
+function renderFilteredTransactions(transactions) {
+  incomeBody.innerHTML = "";
+  expenseBody.innerHTML = "";
+  transactions.forEach((row) => {
+    if (row.type.toUpperCase() === "INCOME") {
+      generateTableRow(row, incomeBody);
+    } else if (row.type.toUpperCase() === "EXPENSE") {
+      generateTableRow(row, expenseBody);
+    }
+  });
+}
 function loadTransactions() {
   const transactionString = localStorage.getItem("transactions");
   if (transactionString) {
@@ -265,4 +285,14 @@ editTransactionForm.addEventListener("submit", (e) => {
   e.preventDefault();
   editTransactionAction();
   editTransaction.classList.remove("show");
+});
+filterCurrency.addEventListener("change", () => {
+  console.log(filterCurrency.value);
+  const selectedCurrency = filterCurrency.value;
+  if (selectedCurrency === "Choose Currency") {
+    loadTransactions();
+  } else {
+    const filteredTransactions = filterTransactionCurrency(selectedCurrency);
+    renderFilteredTransactions(filteredTransactions);
+  }
 });
