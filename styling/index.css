@@ -61,6 +61,13 @@
   margin-right: 80px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
+@media (max-width: 768px) {
+  .content .transactions-data {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 10px;
+  }
+}
 .content .transactions-data h2 {
   font-size: 20px;
   color: #888;
@@ -85,6 +92,11 @@
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   color: #ffff;
 }
+@media (max-width: 768px) {
+  .content .transactions-data .container .data .box {
+    flex: 100%;
+  }
+}
 .content .transactions-data .container .data .box h2 {
   color: #ffff;
 }
@@ -95,6 +107,7 @@
 .content .transactions-action {
   margin: 30px 80px 30px;
 }
+
 .content .transactions-action .head {
   margin-bottom: 15px;
   display: flex;
@@ -122,6 +135,18 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 20px;
+}
+@media (max-width: 768px) {
+  .content .transactions-action {
+    margin: 10px 10px 30px;
+  }
+  .content .transactions-action .wrapper {
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    overflow-x: scroll;
+  }
+  .content .transactions-action .head .mobile-flex {
+    flex-direction: column;
+  }
 }
 .content .transactions-action .box {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
@@ -173,7 +198,7 @@
 @media (max-width: 768px) {
   .pop-up {
     width: 80%;
-    left: 20%;
+    left: 17%;
   }
 }
 .popup-content {

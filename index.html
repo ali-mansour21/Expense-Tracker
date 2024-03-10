@@ -34,15 +34,15 @@
           <div class="container">
             <div class="data">
               <div class="box green">
-                <h2>$1000</h2>
+                <h2 id="totalIncome"></h2>
                 <span>Income</span>
               </div>
               <div class="box red">
-                <h2>$1000</h2>
+                <h2 id="totalExpense"></h2>
                 <span>Expense</span>
               </div>
               <div class="box blue">
-                <h2>$1000</h2>
+                <h2 id="totalBalance"></h2>
                 <span>Total Balance</span>
               </div>
             </div>
@@ -59,15 +59,7 @@
             </div>
             <div class="center-flex gap-20 f-column">
               <h3>Filter By:</h3>
-              <div class="center-flex gap-5">
-                <div class="center-flex gap-5">
-                  <h4>Type:</h4>
-                  <select name="type" id="filterType">
-                    <option value="choose type">Choose Type</option>
-                    <option value="income">Income</option>
-                    <option value="expense">Expense</option>
-                  </select>
-                </div>
+              <div class="center-flex gap-5 mobile-flex">
                 <div class="center-flex gap-5">
                   <h4>Amount:</h4>
                   <input class="w-100" type="number" placeholder="From" />
@@ -75,9 +67,7 @@
                 </div>
                 <div class="center-flex gap-5">
                   <h4>Currencies</h4>
-                  <select name="filterCurrency" id="filterCurrency">
-                    <option value="choose type">Choose Type</option>
-                  </select>
+                  <select name="filter" id="filterCurrency"></select>
                 </div>
               </div>
             </div>
@@ -155,8 +145,8 @@
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./scripts/index.js" type="module"></script>
     <script type="module" src="./scripts/convertCurriencies.js"></script>
     <script src="./scripts/chart.js" type="module"></script>
+    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>
