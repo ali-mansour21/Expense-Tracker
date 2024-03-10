@@ -28,6 +28,8 @@ const editCurrencies = document.getElementById("editcurrencies");
 const editDate = document.getElementById("editDate");
 let selectedTransaction;
 let createdTransactionId = 1;
+const fromAmount = document.getElementById("fromAmount");
+const toAmount = document.getElementById("toAmount");
 fetch("https://crowded-cyan-wildebeest.cyclic.app/students/available")
   .then((response) => {
     const data = response.json();
@@ -90,7 +92,7 @@ const resetValues = (fullName, amount, type, currencie, date) => {
 function filterTransactionCurrency(currency) {
   return allTransaction.filter(
     (transaction) =>
-      (transaction.currencie).toUpperCase() === (currency).toUpperCase()
+      transaction.currencie.toUpperCase() === currency.toUpperCase()
   );
 }
 function renderFilteredTransactions(transactions) {
@@ -246,6 +248,25 @@ async function calculateTotal(transactions) {
     Math.ceil(totalIncome) - Math.ceil(totalExpense)
   }`;
 }
+function filterTransactionByAmount(from, to) {
+  if (to > from) {
+    return allTransaction.filter((transaction) => {
+      const transactionAmount = parseFloat(transaction.amount);
+      return transactionAmount >= from && transactionAmount <= to;
+    });
+  }
+}
+function handleAmountChange() {
+  const filteredAmountTransactions = filterTransactionByAmount(
+    fromAmount.value,
+    toAmount.value
+  );
+  if (filteredAmountTransactions) {
+    renderFilteredTransactions(filteredAmountTransactions);
+  } else {
+    loadTransactions();
+  }
+}
 showCreateTransactions.addEventListener("click", () => {
   createTransactions.classList.add("show");
 });
@@ -296,3 +317,5 @@ filterCurrency.addEventListener("change", () => {
     renderFilteredTransactions(filteredTransactions);
   }
 });
+fromAmount.addEventListener("keyup", handleAmountChange);
+toAmount.addEventListener("keyup", handleAmountChange);
