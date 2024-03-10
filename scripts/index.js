@@ -138,14 +138,21 @@ function createNewTransaction() {
 function attachEventListeners() {
   document.addEventListener("click", (event) => {
     if (event.target.classList.contains("edit")) {
-      
       const id = event.target.dataset.id;
       // Implement  logic here...
     } else if (event.target.classList.contains("delete")) {
-      const id = event.target.dataset.id;
+      const id = parseInt(event.target.dataset.id);
       deleteTransaction(id);
     }
   });
+}
+function deleteTransaction(id) {
+  allTransaction = allTransaction.filter(
+    (transaction) => transaction.id !== id
+  );
+  localStorage.setItem("transactions", JSON.stringify(allTransaction));
+  calculateTotal(allTransaction);
+  loadTransactions();
 }
 function generateTableRow(row, table) {
   const tableRow = document.createElement("tr");
