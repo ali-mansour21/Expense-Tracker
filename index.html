@@ -25,7 +25,7 @@
             <h1 class="title">Dashboard</h1>
           </div>
           <div class="profile">
-            <button class="btn-shape">Converter</button>
+            <button class="btn-shape" id="showConverter">Converter</button>
             <img src="./assets/me.jpg" alt="profile" />
           </div>
         </div>
@@ -141,6 +141,30 @@
             <input type="date" id="date" name="date" required />
           </div>
           <button type="submit">Create</button>
+        </form>
+      </div>
+    </div>
+    <div class="pop-up" id="pop-up-convert">
+      <div class="popup-content">
+        <span class="close" id="close-converter">&times;</span>
+        <h2>Convert To Any Currency</h2>
+        <form id="convertCurrienciesForm">
+          <div class="form-group">
+            <label for="from">From:</label>
+            <select name="from" id="fromSelect"></select>
+          </div>
+          <div class="form-group">
+            <label for="type">TO:</label>
+            <select name="type" id="toSelect"></select>
+          </div>
+          <div class="form-group">
+            <label for="amount">Amout</label>
+            <input type="text" id="convertedAmount" name="amount" required />
+          </div>
+          <div class="form-group">
+            <label for="result">Result</label>
+            <input type="number" id="result" name="result" disabled />
+          </div>
         </form>
       </div>
     </div>
