@@ -19,37 +19,31 @@ const ConverterForm = document.getElementById("pop-up-convert");
 const closeConverter = document.getElementById("close-converter");
 const fromSelect = document.getElementById("fromSelect");
 const toSelect = document.getElementById("toSelect");
+const editTransaction = document.getElementById("pop-up-editTransaction");
+const editTransactionForm = document.getElementById("editTransactionForm");
+const editName = document.getElementById("editName");
+const editAmount = document.getElementById("editAmount");
+const editType = document.getElementById("editType");
+const editCurrencies = document.getElementById("editcurrencies");
+const editDate = document.getElementById("editDate");
+let selectedTransaction;
+let createdTransactionId = 1;
 fetch("https://crowded-cyan-wildebeest.cyclic.app/students/available")
   .then((response) => {
     const data = response.json();
     return data;
   })
   .then((data) => {
-    const filterOption = document.createElement("option");
-    filterOption.value = "Choose Currency";
-    filterOption.textContent = "Choose Currency";
-    filterCurrency.appendChild(filterOption);
-
-    const fromOption = document.createElement("option");
-    fromOption.value = "Choose Currency";
-    fromOption.textContent = "Choose Currency";
-    fromSelect.appendChild(fromOption);
-
-    const toOption = document.createElement("option");
-    toOption.value = "Choose Currency";
-    toOption.textContent = "Choose Currency";
-    toSelect.appendChild(toOption);
-
-    const selectOption = document.createElement("option");
-    selectOption.value = "Choose Currency";
-    selectOption.textContent = "Choose Currency";
-    selectCurrencies.appendChild(selectOption);
-
     data.forEach((element) => {
       const filterOption = document.createElement("option");
       filterOption.value = element.code.toLowerCase();
       filterOption.textContent = element.code;
       filterCurrency.appendChild(filterOption);
+
+      const editOption = document.createElement("option");
+      editOption.value = element.code.toLowerCase();
+      editOption.textContent = element.code;
+      editCurrencies.appendChild(editOption);
 
       const fromOption = document.createElement("option");
       fromOption.value = element.code.toLowerCase();
@@ -68,8 +62,8 @@ fetch("https://crowded-cyan-wildebeest.cyclic.app/students/available")
     });
   });
 
-function addTransactionToLocalStorage() {
-  localStorage.setItem("transactions", JSON.stringify(allTransaction));
+async function addTransactionToLocalStorage() {
+  await localStorage.setItem("transactions", JSON.stringify(allTransaction));
 }
 async function convertCurrenciesToUSD(transaction) {
   const result = await convertCurrencies(
@@ -81,13 +75,6 @@ async function convertCurrenciesToUSD(transaction) {
 
   return convertCurrenciesValue;
 }
-// function getTransactionFromLocalStorage() {
-//   const transactionString = localStorage.getItem("transactions");
-//   if (transactionString) {
-//     allTransaction = JSON.parse(transactionString);
-//   }
-//   return allTransaction;
-// }
 
 const resetValues = (fullName, amount, type, currencie, date) => {
   fullName.value = "";
@@ -109,16 +96,16 @@ function renderTransactions() {
   incomeBody.innerHTML = "";
   expenseBody.innerHTML = "";
   allTransaction.forEach((row) => {
-    if (row.type === "INCOME") {
+    if (row.type.toUpperCase() === "INCOME") {
       generateTableRow(row, incomeBody);
-    } else if (row.type === "EXPENSE") {
+    } else if (row.type.toUpperCase() === "EXPENSE") {
       generateTableRow(row, expenseBody);
     }
   });
 }
 function createNewTransaction() {
   const data = {
-    id: allTransaction.length + 1,
+    id: createdTransactionId,
     fullName: transactionName.value,
     amount: amount.value,
     type: type.value.toUpperCase(),
@@ -128,23 +115,51 @@ function createNewTransaction() {
 
   resetValues(transactionName, amount, type, selectCurrencies, date);
   allTransaction.push(data);
+  createdTransactionId += 1;
   addTransactionToLocalStorage();
 
-  incomeBody.innerHTML = "";
-  expenseBody.innerHTML = "";
   loadTransactions();
   calculateTotal(allTransaction);
 }
 function attachEventListeners() {
   document.addEventListener("click", (event) => {
     if (event.target.classList.contains("edit")) {
-      const id = event.target.dataset.id;
-      // Implement  logic here...
+      const id = parseInt(event.target.dataset.id);
+      editTransaction.classList.add("show");
+      selectedTransaction = allTransaction.filter(
+        (transaction) => transaction.id === id
+      );
+      fillData(selectedTransaction);
     } else if (event.target.classList.contains("delete")) {
       const id = parseInt(event.target.dataset.id);
       deleteTransaction(id);
     }
   });
+}
+function fillData(transaction) {
+  editName.value = transaction[0].fullName;
+  editAmount.value = transaction[0].amount;
+  editDate.value = transaction[0].date;
+  console.log(transaction[0].type);
+}
+async function editTransactionAction() {
+  const id = selectedTransaction[0].id;
+  const data = {
+    fullName: editName.value,
+    amount: editAmount.value,
+    type: editType.value.toUpperCase(),
+    currencie: editCurrencies.value.toUpperCase(),
+    date: editDate.value,
+  };
+  const index = allTransaction.findIndex(
+    (transaction) => transaction.id === id
+  );
+  if (index !== -1) {
+    allTransaction[index] = { ...allTransaction[index], ...data };
+    await addTransactionToLocalStorage();
+    loadTransactions();
+    calculateTotal(allTransaction);
+  }
 }
 function deleteTransaction(id) {
   allTransaction = allTransaction.filter(
@@ -181,8 +196,6 @@ function generateTableRow(row, table) {
   actionCell.appendChild(actionCellImageTwo);
   tableRow.appendChild(actionCell);
   table.appendChild(tableRow);
-  const editButtons = document.querySelectorAll(".edit");
-  const deleteButtons = document.querySelectorAll(".delete");
 }
 
 async function calculateTotal(transactions) {
@@ -247,4 +260,9 @@ document.addEventListener("keyup", async function () {
     );
     result.value = response.data;
   } catch (e) {}
+});
+editTransactionForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  editTransactionAction();
+  editTransaction.classList.remove("show");
 });

@@ -127,7 +127,6 @@
           <div class="form-group">
             <label for="type">Type</label>
             <select name="type" id="type">
-              <option value="Choose Type">Choose Type</option>
               <option value="income">Income</option>
               <option value="expense">Expense</option>
             </select>
@@ -141,6 +140,38 @@
             <input type="date" id="date" name="date" required />
           </div>
           <button type="submit">Create</button>
+        </form>
+      </div>
+    </div>
+    <div class="pop-up" id="pop-up-editTransaction">
+      <div class="popup-content">
+        <span class="close" id="close-edittransaction">&times;</span>
+        <h2>Create Transaction</h2>
+        <form id="editTransactionForm">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="editName" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="amount">Amout</label>
+            <input type="number" id="editAmount" name="amount" required />
+          </div>
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select name="type" id="editType" required>
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="type">Currencies</label>
+            <select name="type" id="editcurrencies" required></select>
+          </div>
+          <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="editDate" name="date" required />
+          </div>
+          <button type="submit">Edit</button>
         </form>
       </div>
     </div>
