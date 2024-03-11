@@ -30,7 +30,7 @@ let selectedTransaction;
 let createdTransactionId = 1;
 const fromAmount = document.getElementById("fromAmount");
 const toAmount = document.getElementById("toAmount");
-fetch("https://crowded-cyan-wildebeest.cyclic.app/students/available")
+fetch("https://dull-pink-sockeye-tie.cyclic.app/students/available")
   .then((response) => {
     const data = response.json();
     return data;

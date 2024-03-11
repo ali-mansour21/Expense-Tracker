@@ -1,5 +1,5 @@
 async function convertCurrencies(fromCurrency, toCurrency, amount) {
-  const apiUrl = " https://crowded-cyan-wildebeest.cyclic.app/students/convert";
+  const apiUrl = "https://dull-pink-sockeye-tie.cyclic.app/students/convert";
   try {
     const result = await axios.post(apiUrl, {
       from: fromCurrency.toUpperCase(),
